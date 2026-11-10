@@ -1,0 +1,5 @@
+[
+ {
+  "text": "Bookings caveat (unconfirmed definition): the warehouse has no documented 'bookings' metric or fiscal-year calendar. For calendar 2025, closed_won opportunities (opportunities.amount_usd, by close_date) total $5.22M (4 opps), while orders.subtotal_usd by order_date totals $5.56M (6 orders). The $340K gap is ORD002 ($100K, 2025-01-15) and ORD006 ($240K, 2025-10-05), which have no matching closed_won opp. Confirm with finance which definition is the standard and what the FY start month is before reporting externally."
+ }
+]

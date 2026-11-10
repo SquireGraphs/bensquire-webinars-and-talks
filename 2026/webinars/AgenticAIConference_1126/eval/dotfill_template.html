@@ -1,0 +1,36 @@
+<style>html,body{margin:0;background:transparent;overflow:hidden}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script>
+const D=__DATA__;
+const W=1664,H=600,c=document.getElementById("c"),g=c.getContext("2d"),R=window.devicePixelRatio||1;
+c.width=W*R;c.height=H*R;c.style.width=W+"px";c.style.height=H+"px";g.scale(R,R);
+const F="Helvetica, Arial, sans-serif",FAIL="#b4580f",HELD="#2a62c4",INK="#14202e",GRAY="#5a6470",SLOT="#ddd8cf";
+const PW=520,PG=52,CW=150,CG=35,BOT=455,STEP=0.045,DROP=0.5,PANEL=4.2,HOLD=5,FADE=0.8;
+const dots=[];
+D.panels.forEach(function(p,i){p.models.forEach(function(m,j){m.runs.split("").forEach(function(ch,k){
+  dots.push({i:i,j:j,k:k,f:ch==="x",t:i*PANEL+(k*p.models.length+j)*STEP});});});});
+const CYCLE=D.panels.length*PANEL+DROP+HOLD+FADE;
+function slot(i,j,k){return [i*(PW+PG)+j*(CW+CG)+15+(k%5)*30,BOT-Math.floor(k/5)*30];}
+function text(s,x,y,size,col,bold,align){g.font=(bold?"600 ":"")+size+"px "+F;g.fillStyle=col;g.textAlign=align||"left";g.fillText(s,x,y);}
+function dot(x,y,col,fill){g.beginPath();g.arc(x,y,12,0,7);if(fill){g.fillStyle=col;g.fill();}else{g.strokeStyle=col;g.lineWidth=1.5;g.stroke();}}
+function frame(ms){
+  const t=(ms/1000)%CYCLE;g.clearRect(0,0,W,H);
+  const alpha=t>CYCLE-FADE?(CYCLE-t)/FADE:1;
+  const counts={};
+  D.panels.forEach(function(p,i){const px=i*(PW+PG);
+    text(p.title[0],px,36,28,INK,true);text(p.title[1],px,72,24,GRAY,false);
+    p.models.forEach(function(m,j){const cx=px+j*(CW+CG);
+      m.runs.split("").forEach(function(_,k){const s=slot(i,j,k);dot(s[0],s[1],SLOT,false);});
+      text(m.name,cx+75,512,24,INK,false,"center");});});
+  g.globalAlpha=alpha;
+  dots.forEach(function(d){const dt=t-d.t;if(dt>0){const s=slot(d.i,d.j,d.k);
+    const u=Math.min(dt/DROP,1),e=1-Math.pow(1-u,3),y=-20+(s[1]+20)*e;
+    dot(s[0],y,d.f?FAIL:HELD,true);
+    if(u===1){const key=d.i+"-"+d.j;counts[key]=counts[key]||[0,0];counts[key][1]++;if(d.f){counts[key][0]++;}}}});
+  D.panels.forEach(function(p,i){p.models.forEach(function(m,j){const n=counts[i+"-"+j];if(n){
+    const cx=i*(PW+PG)+j*(CW+CG);text(n[0]+" / "+n[1],cx+75,270,26,n[0]?FAIL:HELD,true,"center");}});});
+  g.globalAlpha=1;
+  dot(12,572,FAIL,true);text(D.legend[0],32,580,24,GRAY);g.font="24px "+F;const lx=32+g.measureText(D.legend[0]).width+56;dot(lx,572,HELD,true);text(D.legend[1],lx+20,580,24,GRAY);
+  requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+</script>

@@ -1,0 +1,15 @@
+# Neocarta: pinned to a main-branch commit because the OSI MCP tools
+# (metric search, get_metric_expression) and the governance-tag model are not in
+# the 0.8.0 PyPI release. Switch to neocarta[mcp]>=0.8.1 once it ships.
+neocarta[mcp] @ git+https://github.com/neo4j-labs/neocarta@ba6bf7945bf9c60640c664a03ccc26d0013996bf
+neo4j-agent-memory==0.7.0
+
+anthropic>=0.40
+mcp>=1.9
+google-cloud-bigquery>=3.25
+sqlglot>=25
+neo4j>=5.26
+python-dotenv
+rich
+pytest
+pyyaml
