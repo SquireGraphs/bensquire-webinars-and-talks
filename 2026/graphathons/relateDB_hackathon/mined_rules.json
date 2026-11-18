@@ -1,0 +1,214 @@
+{
+ "rules": [],
+ "all": [
+  {
+   "combo": [
+    "Brain Freeze",
+    "Lotus Petal",
+    "Underworld Breach"
+   ],
+   "accepted": false,
+   "why": "doesn't trace the combo",
+   "reasoning": "The graph reads Underworld Breach's escape only as a static 'cast_from_graveyard' and never turns it into an actual spell cast. Casting from the graveyard with escape should cause a cast_spell event, which triggers storm on Brain Freeze, and the milled cards refill the graveyard for more escapes.",
+   "rule": {
+    "name": "Escape casting from graveyard",
+    "match": "each nonland card in your graveyard has escape|has escape|you may cast cards? from your graveyard",
+    "kind": "Activated",
+    "trigger": [],
+    "costs": [
+     {
+      "resource": "mana",
+      "amount": "mana value"
+     }
+    ],
+    "produces": [],
+    "causes": [
+     {
+      "event": "cast_spell",
+      "scope": "any"
+     }
+    ],
+    "example": [
+     "Brain Freeze",
+     "Lotus Petal",
+     "Underworld Breach"
+    ]
+   }
+  },
+  {
+   "combo": [
+    "Jeska's Will",
+    "Underworld Breach",
+    "Wheel of Fortune"
+   ],
+   "accepted": false,
+   "why": "doesn't trace the combo",
+   "reasoning": "Underworld Breach lets each spell be recast from the graveyard. Each cast pays mana and can lead to another cast. The graph needs this to be a loop that is triggered by casting a spell and itself causes casting a spell.",
+   "rule": {
+    "name": "Escape recast from graveyard",
+    "match": "each nonland card in your graveyard has escape|has escape|cast cards from your graveyard for their escape cost",
+    "kind": "Triggered",
+    "trigger": [
+     "cast_spell"
+    ],
+    "costs": [
+     {
+      "resource": "mana",
+      "amount": "mana value"
+     }
+    ],
+    "produces": [
+     {
+      "resource": "card_draw",
+      "amount": 1
+     }
+    ],
+    "causes": [
+     {
+      "event": "cast_spell",
+      "scope": "any"
+     }
+    ],
+    "example": [
+     "Jeska's Will",
+     "Underworld Breach",
+     "Wheel of Fortune"
+    ]
+   }
+  },
+  {
+   "combo": [
+    "Lion's Eye Diamond",
+    "Underworld Breach",
+    "Wheel of Fortune"
+   ],
+   "accepted": false,
+   "why": "doesn't trace the combo",
+   "reasoning": "The graph doesn't model the costs of Lion's Eye Diamond. It sacrifices itself, which is an artifact cost, and it discards the hand, which uses up cards. Escape can recast it from the graveyard and Wheel of Fortune refills the hand. With those costs modeled, the loop closes.",
+   "rule": {
+    "name": "Sacrifice artifact and discard hand for mana",
+    "match": "discard your hand, sacrifice this artifact",
+    "kind": "Activated",
+    "trigger": [],
+    "costs": [
+     {
+      "resource": "artifact",
+      "amount": 1
+     },
+     {
+      "resource": "card_draw",
+      "amount": 1
+     }
+    ],
+    "produces": [
+     {
+      "resource": "mana",
+      "amount": 3
+     }
+    ],
+    "causes": [
+     {
+      "event": "self_leaves",
+      "scope": "self"
+     }
+    ],
+    "example": [
+     "Lion's Eye Diamond",
+     "Underworld Breach",
+     "Wheel of Fortune"
+    ]
+   }
+  },
+  {
+   "combo": [
+    "Brain Freeze",
+    "Lion's Eye Diamond",
+    "Underworld Breach"
+   ],
+   "accepted": false,
+   "why": "doesn't trace the combo",
+   "reasoning": "Casting from the graveyard with escape, for example recasting Lion's Eye Diamond, returns an artifact. LED then spends that artifact to make mana, and that mana pays for the next cast from the graveyard. Each of those casts triggers storm. The graph has no resource flow that closes this loop.",
+   "rule": {
+    "name": "Graveyard recast loop",
+    "match": "has escape|discard your hand, sacrifice",
+    "kind": "Activated",
+    "trigger": [],
+    "costs": [
+     {
+      "resource": "artifact",
+      "amount": 1
+     },
+     {
+      "resource": "mana",
+      "amount": "mana value"
+     }
+    ],
+    "produces": [
+     {
+      "resource": "mana",
+      "amount": 3
+     },
+     {
+      "resource": "artifact",
+      "amount": 1
+     }
+    ],
+    "causes": [
+     {
+      "event": "cast_spell",
+      "scope": "any"
+     }
+    ],
+    "example": [
+     "Brain Freeze",
+     "Lion's Eye Diamond",
+     "Underworld Breach"
+    ]
+   }
+  },
+  {
+   "combo": [
+    "Earthcraft",
+    "Shrieking Drake"
+   ],
+   "accepted": false,
+   "why": "doesn't trace the combo",
+   "reasoning": "The graph misses that the mana from untapping a land pays to recast the bounced creature. That makes a creature enter, which re-triggers Drake's enter effect.",
+   "rule": {
+    "name": "Untap land to recast creature",
+    "match": "untap target basic land",
+    "kind": "Activated",
+    "trigger": [],
+    "costs": [
+     {
+      "resource": "tap"
+     }
+    ],
+    "produces": [
+     {
+      "resource": "mana",
+      "amount": 1
+     },
+     {
+      "resource": "untap",
+      "amount": 1
+     }
+    ],
+    "causes": [
+     {
+      "event": "self_enters",
+      "scope": "other"
+     },
+     {
+      "event": "creature_enters",
+      "scope": "any"
+     }
+    ],
+    "example": [
+     "Earthcraft",
+     "Shrieking Drake"
+    ]
+   }
+  }
+ ]
+}

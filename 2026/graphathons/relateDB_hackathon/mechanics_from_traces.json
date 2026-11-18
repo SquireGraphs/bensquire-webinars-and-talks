@@ -1,0 +1,123 @@
+{
+ "verified": 75,
+ "graph_traces": 51,
+ "mechanics": [
+  {
+   "mechanic": "return to hand",
+   "unlocks": 10,
+   "examples": [
+    "Cloudstone Curio + Crimson Kobolds + Crookshank Kobolds",
+    "Cloudstone Curio + Crimson Kobolds + Kobolds of Kher Keep",
+    "Cloudstone Curio + Crimson Kobolds + Rograkh, Son of Rohgahh",
+    "Cloudstone Curio + Crookshank Kobolds + Kobolds of Kher Keep",
+    "Cloudstone Curio + Crookshank Kobolds + Rograkh, Son of Rohgahh"
+   ],
+   "cards": [
+    "Crimson Kobolds",
+    "Crookshank Kobolds",
+    "Kobolds of Kher Keep",
+    "Kor Skyfisher",
+    "Mox Amber",
+    "Other Permanent",
+    "Peregrine Drake",
+    "Rograkh, Son of Rohgahh",
+    "Whitemane Lion"
+   ]
+  },
+  {
+   "mechanic": "cast from hand again (it was returned to hand)",
+   "unlocks": 8,
+   "examples": [
+    "Cloudstone Curio + Crimson Kobolds + Crookshank Kobolds",
+    "Cloudstone Curio + Crimson Kobolds + Kobolds of Kher Keep",
+    "Cloudstone Curio + Crookshank Kobolds + Kobolds of Kher Keep",
+    "Cloudstone Curio + Crookshank Kobolds + Rograkh, Son of Rohgahh",
+    "Cloudstone Curio + Kobolds of Kher Keep + Rograkh, Son of Rohgahh"
+   ],
+   "cards": [
+    "Crimson Kobolds",
+    "Crookshank Kobolds",
+    "Kobolds of Kher Keep",
+    "Kor Skyfisher",
+    "Mox Amber",
+    "Other Permanent",
+    "Peregrine Drake",
+    "Rograkh, Son of Rohgahh",
+    "Whitemane Lion"
+   ]
+  },
+  {
+   "mechanic": "sacrifice or discard into the graveyard",
+   "unlocks": 7,
+   "examples": [
+    "Altar of Dementia + Gravecrawler + Pitiless Plunderer",
+    "Ashnod's Altar + Gravecrawler + Pitiless Plunderer",
+    "Brain Freeze + Lion's Eye Diamond + Underworld Breach",
+    "Gravecrawler + Phyrexian Altar",
+    "Gravecrawler + Pitiless Plunderer + Woe Strider"
+   ],
+   "cards": [
+    "Gravecrawler",
+    "Lion's Eye Diamond",
+    "Walking Ballista"
+   ]
+  },
+  {
+   "mechanic": "untapping",
+   "unlocks": 5,
+   "examples": [
+    "Archaeomancer + Cloud of Faeries + Ghostly Flicker + Panharmonicon",
+    "Brago, King Eternal + Cyclonic Rift + Mnemonic Wall",
+    "Kor Skyfisher + Panharmonicon + Peregrine Drake",
+    "Panharmonicon + Peregrine Drake + Venser, Shaper Savant",
+    "Panharmonicon + Peregrine Drake + Whitemane Lion"
+   ],
+   "cards": []
+  },
+  {
+   "mechanic": "cast or return from the graveyard",
+   "unlocks": 5,
+   "examples": [
+    "Altar of Dementia + Gravecrawler + Pitiless Plunderer",
+    "Ashnod's Altar + Gravecrawler + Pitiless Plunderer",
+    "Gravecrawler + Phyrexian Altar",
+    "Gravecrawler + Pitiless Plunderer + Woe Strider",
+    "Mikaeus, the Unhallowed + Walking Ballista"
+   ],
+   "cards": [
+    "Gravecrawler",
+    "Walking Ballista"
+   ]
+  },
+  {
+   "mechanic": "cast or return from the graveyard, paying graveyard",
+   "unlocks": 2,
+   "examples": [
+    "Brain Freeze + Lion's Eye Diamond + Underworld Breach",
+    "Lion's Eye Diamond + Underworld Breach + Wheel of Fortune"
+   ],
+   "cards": [
+    "Brain Freeze",
+    "Lion's Eye Diamond",
+    "Wheel of Fortune"
+   ]
+  },
+  {
+   "mechanic": "mill",
+   "unlocks": 2,
+   "examples": [
+    "Altar of Dementia + Gravecrawler + Pitiless Plunderer",
+    "Brain Freeze + Lion's Eye Diamond + Underworld Breach"
+   ],
+   "cards": []
+  },
+  {
+   "mechanic": "storm copies",
+   "unlocks": 1,
+   "examples": [
+    "Brain Freeze + Lion's Eye Diamond + Underworld Breach"
+   ],
+   "cards": []
+  }
+ ]
+}

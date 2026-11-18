@@ -1,0 +1,52 @@
+[
+ {
+  "name": "MillModel",
+  "cards": [
+   "Bloodchief Ascension",
+   "Mindcrank"
+  ],
+  "edges": [
+   {
+    "card": "Mindcrank",
+    "text": "whenever an opponent loses life, that player mills that many cards. ",
+    "p": {
+     "scope": "any"
+    },
+    "s": "c73c1d91-0163-49c6-832a-b9327e7a2c9b#llm0",
+    "t": "card_to_opponent_graveyard",
+    "tt": "Event",
+    "type": "RETRIGGERS",
+    "vis": [
+     "c73c1d91-0163-49c6-832a-b9327e7a2c9b#llm0",
+     "card_to_opponent_graveyard"
+    ],
+    "label": "makes happen"
+   },
+   {
+    "card": "Bloodchief Ascension",
+    "text": "whenever a card is put into an opponent's graveyard from anywhere, if this enchantment has three or more quest counters on it, you may have that player lose 2 life. if you do, you gain 2 life.",
+    "p": {},
+    "s": "d5ea905b-4bb6-48d0-9082-c472703db550#llm1",
+    "t": "card_to_opponent_graveyard",
+    "tt": "Event",
+    "type": "TRIGGERED_BY",
+    "vis": [
+     "card_to_opponent_graveyard",
+     "d5ea905b-4bb6-48d0-9082-c472703db550#llm1"
+    ],
+    "label": "sets off"
+   }
+  ],
+  "loop": {
+   "cards": [
+    "Bloodchief Ascension",
+    "Mindcrank"
+   ],
+   "net": {
+    "lifegain": 2,
+    "damage_players": 2,
+    "life_loss_opponents": 2
+   }
+  }
+ }
+]

@@ -1,5 +1,35 @@
 {
-  "base_url": "https://github.com/<owner>/<repo>/releases/download/data-v1/",
-  "tag": "data-v1",
-  "files": []
+  "files": [
+    {
+      "name": "mtg_live.rl",
+      "gzip": true,
+      "sha256": "7439f02d705f53dfe469140dc2acd931b5d98ee496e8f8b399e99731ecc24cf7",
+      "bytes": 124452864,
+      "parts": [
+        {
+          "path": "data/mtg_live.rl.gz.001",
+          "sha256": "ba9a5869db8d9a995c234dac850650a621a1222bf122ba91aaccf5dd3b3293ba",
+          "bytes": 47185920
+        },
+        {
+          "path": "data/mtg_live.rl.gz.002",
+          "sha256": "aeae5fa054998f6c143d150cd4dcfb26535d0e6bec6e7ce097d9b9688ee3d25e",
+          "bytes": 15360450
+        }
+      ]
+    },
+    {
+      "name": "variants_slim.jsonl.gz",
+      "gzip": false,
+      "sha256": "9705e83c93da5ea93f0e93ad5d779944e1432685a28c4705a2eabda9e08f42ce",
+      "bytes": 6885571,
+      "parts": [
+        {
+          "path": "data/variants_slim.jsonl.gz",
+          "sha256": "9705e83c93da5ea93f0e93ad5d779944e1432685a28c4705a2eabda9e08f42ce",
+          "bytes": 6885571
+        }
+      ]
+    }
+  ]
 }

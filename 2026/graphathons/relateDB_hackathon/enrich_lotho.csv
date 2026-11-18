@@ -1,0 +1,216 @@
+card,reasons,already enriched
+"Abdel Adrian, Gorion's Ward",deck,True
+Accursed Marauder,neighbor,False
+Aetherflux Reservoir,neighbor; one-away,True
+Alhammarret's Archive,one-away,False
+Anguished Unmaking,neighbor,True
+Animate Dead,deck,True
+Approach of the Second Sun,one-away,True
+Arcane Signet,deck,True
+Archaeomancer's Map,neighbor,False
+Archivist of Oghma,deck,False
+"Ashiok, Wicked Manipulator",one-away,False
+"Astarion, the Decadent",one-away,False
+Authority of the Consuls,deck,True
+Aven Interrupter,deck,False
+Banewhip Punisher,neighbor,False
+Barrin's Codex,neighbor,False
+Bender's Waterskin,neighbor,True
+Beseech the Mirror,deck,False
+Biotransference,one-away,False
+Black Market Connections,deck,False
+Black Vise,one-away,False
+Blind Obedience,deck,False
+"Blitzwing, Cruel Tormentor // Blitzwing, Adaptive Assailant",one-away,False
+Bloodchief Ascension,deck,False
+Bloodletter of Aclazotz,one-away,False
+Bolas's Citadel,deck,False
+"Braids, Arisen Nightmare",deck,False
+Breach the Multiverse,neighbor,False
+Bronze Walrus,neighbor,True
+Cabal Ritual,neighbor,False
+Cabal Therapy,deck,False
+Call of the Ring,neighbor,False
+Caretaker's Talent,deck,False
+Cathar Commando,neighbor,False
+Charcoal Diamond,neighbor,True
+"Chimil, the Inner Sun",neighbor,False
+Chromatic Lantern,neighbor,True
+Chrome Mox,deck,True
+Circling Vultures,neighbor,False
+Corpse Knight,deck,False
+Coveted Jewel,neighbor,True
+Cruelclaw's Heist,deck,False
+Culling the Weak,deck,False
+Cut a Deal,neighbor,True
+Damn,neighbor,True
+Dance of the Dead,deck,False
+Dark Confidant,neighbor,False
+Dark Ritual,deck,False
+Dauthi Voidwalker,deck,False
+Deadly Rollick,deck,True
+Decanter of Endless Water,neighbor,True
+Decree of Pain,neighbor,True
+Demonic Tutor,deck,True
+Despark,neighbor,True
+Disenchant,neighbor,True
+Distinguished Conjurer,neighbor,True
+Drana and Linvala,deck,False
+Drannith Magistrate,deck,False
+Dread Return,neighbor,False
+Eldrazi Displacer,deck,True
+Enlightened Tutor,deck,False
+Entomb,deck,False
+Esper Sentinel,deck,True
+Everflowing Chalice,neighbor,True
+Feast of Sanity,one-away,False
+Fellwar Stone,neighbor,True
+Fleshbag Marauder,neighbor,False
+Flumph,one-away,False
+Forge Anew,neighbor,False
+Fountain of Renewal,neighbor,False
+Fountainport Bell,neighbor,False
+Fracture,neighbor,True
+Generous Gift,neighbor,True
+Get Lost,deck,False
+Gilded Lotus,neighbor,True
+Glorious Protector,one-away,True
+Go for the Throat,neighbor,True
+Gold Myr,neighbor,True
+Golem's Heart,one-away,False
+Grand Abolisher,deck,False
+Grasp of Fate,neighbor,False
+Grim Hireling,neighbor,False
+Grim Tutor,deck,False
+"Haliya, Guided by Light",one-away,False
+Hammer of Nazahn,neighbor,False
+Hecatomb,neighbor,False
+Helm of Obedience,one-away,False
+Herald's Horn,neighbor,True
+Heraldic Banner,neighbor,True
+Hoarding Broodlord,deck,False
+Howling Mine,neighbor,True
+Imperial Seal,deck,False
+Inherited Envelope,neighbor,True
+Journey to Nowhere,one-away,False
+Knowledge Pool,one-away,False
+Kormus Bell,one-away,False
+Land Tax,neighbor,True
+Lantern of the Lost,neighbor,False
+Last Voyage of the _____,one-away,False
+Leonin Elder,one-away,False
+Leonin Relic-Warder,deck,True
+Lesser Masticore,neighbor,False
+Lion's Eye Diamond,neighbor,True
+Lively Dirge,deck,False
+"Lotho, Corrupt Shirriff",deck,False
+Lotus Petal,deck,True
+Lumbering Battlement,one-away,True
+Mana Geode,neighbor,True
+Mana Vault,deck,True
+Mangara's Tome,neighbor,False
+Manhole Cover,neighbor,False
+Mantle of the Ancients,neighbor,False
+Maralen of the Mornsong,one-away,False
+Marble Diamond,neighbor,True
+Martial Coup,neighbor,True
+Mesa Enchantress,neighbor,False
+Mindcrank,one-away,False
+Mithril Coat,neighbor,True
+Monologue Tax,neighbor,False
+Moonshaker Cavalry,neighbor,False
+Mornsong Aria,one-away,False
+Mortify,neighbor,True
+Mox Amber,deck,True
+Mox Diamond,deck,True
+Mox Opal,deck,True
+Murder,neighbor,True
+Mycosynth Lattice,one-away,True
+Mysterious Limousine,one-away,False
+Near-Death Experience,one-away,False
+Necromancy,deck,False
+Necropotence,deck,False
+Night's Whisper,neighbor,True
+Nuka-Cola Vending Machine,neighbor,False
+"Ob Nixilis, the Hate-Twisted",one-away,False
+Oblivion Ring,one-away,True
+Omen Machine,one-away,False
+Opalescence,one-away,False
+Opposition Agent,deck,False
+Orcish Bowmasters,deck,False
+Orim's Chant,deck,False
+Ornithopter of Paradise,neighbor,True
+"Page, Loose Leaf",neighbor,False
+Palladium Myr,neighbor,True
+Parallax Wave,one-away,True
+Patchwork Banner,neighbor,True
+Path to Exile,neighbor,True
+Peer into the Abyss,deck,False
+Pestilence,neighbor,False
+Phyrexian Arena,neighbor,False
+Plague of Vermin,one-away,False
+Planar Atlas,neighbor,True
+Plumb the Forbidden,neighbor,True
+Psychosis Crawler,one-away,False
+Ranger-Captain of Eos,deck,False
+Reanimate,deck,False
+Recruiter of the Guard,deck,True
+Relic of Legends,neighbor,True
+Reprieve,deck,True
+Requiem Monolith,one-away,False
+Return to Dust,neighbor,True
+Rune-Scarred Demon,neighbor,False
+Sacrifice,deck,False
+Saw in Half,deck,True
+Secret Rendezvous,neighbor,True
+Sensei's Divining Top,deck,False
+Serum Tank,neighbor,False
+Sevinne's Reclamation,deck,False
+"Sheoldred, the Apocalypse",one-away,False
+Shred Memory,deck,False
+Silence,deck,False
+Smothering Tithe,deck,True
+Snuff Out,deck,True
+Sol Ring,deck,True
+Solar Transformer,neighbor,True
+Soul Partition,deck,False
+Soul Warden,neighbor,True
+Soul's Attendant,neighbor,False
+Soul-Guide Lantern,neighbor,False
+Springleaf Drum,deck,True
+"Sram, Senior Edificer",neighbor,False
+Staff of Nin,neighbor,False
+Starfield of Nyx,one-away,False
+Starving Revenant,one-away,False
+Stoneforge Mystic,neighbor,False
+Stroke of Midnight,neighbor,True
+Sunscourge Champion,neighbor,False
+Sunseed Nurturer,neighbor,False
+Supply Drop,neighbor,False
+Suspension Field,one-away,False
+Suture Priest,neighbor,False
+Swords to Plowshares,deck,True
+Talisman of Hierarchy,deck,True
+The Meathook Massacre,deck,False
+Thought Vessel,neighbor,True
+Thran Dynamo,neighbor,True
+Throne of Eldraine,neighbor,False
+Tome of the Guildpact,neighbor,False
+Touch the Spirit Realm,deck,True
+Uba Mask,one-away,False
+Underworld Dreams,one-away,False
+Unearth,neighbor,True
+Unmarked Grave,deck,False
+Vampiric Tutor,deck,True
+Vanishing Verse,deck,False
+Vanquisher's Banner,neighbor,False
+Vile Requiem,neighbor,False
+Village Bell-Ringer,one-away,True
+Vindicate,neighbor,True
+Wishclaw Talisman,deck,False
+Withering Boon,deck,False
+Withering Torment,neighbor,True
+Withering Wisps,neighbor,False
+Workhorse,one-away,True
+Worn Powerstone,neighbor,True
+Yawgmoth's Will,deck,False

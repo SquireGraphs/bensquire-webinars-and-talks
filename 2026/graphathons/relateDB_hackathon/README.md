@@ -8,9 +8,8 @@ step away from a combo, all from a labeled property graph that runs locally in [
     make start
 
 Needs Python 3.10+ and `make` (macOS and Linux have both; on Windows use WSL). `make start` creates a
-virtual environment, installs three packages (relate-db, numpy, scipy), downloads the prebuilt graph and
-Commander Spellbook combos from the GitHub Release (checksum-verified, once), and opens
-http://localhost:8000. No API key, and nothing leaves your machine: the graph runs in memory on your device.
+virtual environment, installs three packages (relate-db, numpy, scipy), unpacks the saved graph from
+data/ (checksum-verified, once), and opens http://localhost:8000. No API key, and nothing leaves your machine: the graph runs in memory on your device.
 
 Choose "Analyse your deck" and paste a decklist or upload an export from Moxfield, Archidekt or MTG Arena.
 Names are matched in any case and by front face, sideboards are skipped, and unknown cards come back with
@@ -27,8 +26,15 @@ the LLM readings (extracted_*.jsonl), then:
     make build CARDS=default-cards-YYYYMMDD.jsonl VARIANTS=variants.json.gz
     # later runs: make start (keeps the graph you built; `make data` never overwrites it)
 
-To share a rebuilt graph: stop the server, then `make release` packages mtg_live.rl and variants_slim.jsonl.gz,
-uploads them to a GitHub Release (needs the gh CLI) and writes data_manifest.json. Commit that file and push.
+## The saved graph (data/)
+The Relate store is a single file, `mtg_live.rl`, saved on disk (the app loads it into memory while it runs, and
+nothing is lost when it stops). A copy ships in this repo: `data/mtg_live.rl.gz.001`, `.002`, … are the store
+gzipped and split under GitHub's file size limit, next to `data/variants_slim.jsonl.gz` (the Commander Spellbook
+combos), with every checksum in `data_manifest.json`. `make data` puts them back together as `mtg_live.rl`. By
+hand: `cat data/mtg_live.rl.gz.* | gunzip > mtg_live.rl`.
+
+To ship a rebuilt graph: stop the server, run `make pack`, then commit `data/` and `data_manifest.json`.
+`make release` does the same and also attaches the files to a GitHub Release.
 
 ## Setup (virtual environment)
     bash setup_venv.sh               # creates .venv with the core packages (relate-db, scipy, anthropic, pypdf...)

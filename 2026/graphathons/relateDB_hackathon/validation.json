@@ -1,0 +1,166 @@
+{
+ "versions": [
+  {
+   "name": "Rules (regex) only",
+   "found": 22,
+   "checks": "5/5",
+   "cost": "free"
+  },
+  {
+   "name": "Haiku 5.5 only",
+   "found": 30,
+   "checks": "3/5",
+   "cost": "~$0.06"
+  },
+  {
+   "name": "Sonnet 5.5 only",
+   "found": 35,
+   "checks": "3/5",
+   "cost": "~$1"
+  },
+  {
+   "name": "Rules + Haiku 5.5",
+   "found": 36,
+   "checks": "5/5",
+   "cost": "~$0.06"
+  },
+  {
+   "name": "Rules + Sonnet 5.5",
+   "found": 36,
+   "checks": "5/5",
+   "cost": "~$1"
+  }
+ ],
+ "outOf": 53,
+ "decks": [
+  {
+   "name": "Brago, King Eternal",
+   "known": 21,
+   "traced": 15,
+   "candidates": 6
+  },
+  {
+   "name": "Teysa Karlov",
+   "known": 32,
+   "traced": 27,
+   "candidates": 10
+  },
+  {
+   "name": "Lotho, Corrupt Shirriff",
+   "known": 9,
+   "traced": 8,
+   "candidates": 0
+  },
+  {
+   "name": "Vivi Ornitier",
+   "known": 7,
+   "traced": 5,
+   "candidates": 2
+  },
+  {
+   "name": "Flubs, the Fool",
+   "known": 12,
+   "traced": 8,
+   "candidates": 0
+  },
+  {
+   "name": "Lord of the Nazgûl",
+   "known": 0,
+   "traced": 0,
+   "candidates": 0
+  }
+ ],
+ "checks": {
+  "total": 132,
+  "realCombos": 35,
+  "lookAlikes": 65,
+  "nonbos": 15,
+  "randomDecks": 280,
+  "falseSubset": 6,
+  "falseFull": 17,
+  "falseFullBefore": 25
+ },
+ "suggest": {
+  "trials": 32,
+  "rows": [
+   {
+    "name": "Spellbook count only",
+    "top5": 22,
+    "top10": 34,
+    "median": 14
+   },
+   {
+    "name": "Spellbook, weighted",
+    "top5": 31,
+    "top10": 44,
+    "median": 13.5
+   },
+   {
+    "name": "Graph only",
+    "top5": 25,
+    "top10": 28,
+    "median": 38
+   },
+   {
+    "name": "Combined",
+    "top5": 38,
+    "top10": 59,
+    "median": 8
+   }
+  ]
+ },
+ "graph": {
+  "cards": 33680,
+  "abilities": 110793,
+  "ruleAbilities": 49510,
+  "llmAbilities": 61283,
+  "llmCards": 30403,
+  "nodes": 146519,
+  "relationships": 378984,
+  "enrichCost": "$2.90",
+  "enrichCards": 29830,
+  "slimMB": 145,
+  "fullMB": 430
+ },
+ "coverage": {
+  "sample": 300,
+  "traced": 37,
+  "peak": 42
+ },
+ "rulings": {
+  "rulings": 78973,
+  "cards": 19895,
+  "keywordRules": 248,
+  "rulesEmbedded": 2995,
+  "dims": 384,
+  "judged": 256,
+  "works": 118,
+  "fails": 138,
+  "unsure": 0,
+  "randomJudged": 18,
+  "randomWork": 0,
+  "agreeFirst": 154,
+  "agreeFirstOf": 196
+ },
+ "speed": {
+  "deck": "Gandalf the White",
+  "cycles": 425000,
+  "seconds": 7,
+  "before": 152
+ },
+ "traces": {
+  "walked": 80,
+  "infinite": 67,
+  "nearInfinite": 12,
+  "fails": 5,
+  "verified": 75,
+  "graphAgrees": 51,
+  "spellbookCombos": 121892,
+  "withZones": 121892,
+  "withSteps": 121549
+ },
+ "states": {
+  "gandalfBefore": 166,
+  "gandalfAfter": 151
+ }
+}

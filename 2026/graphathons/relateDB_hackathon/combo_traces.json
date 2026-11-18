@@ -1,0 +1,244 @@
+{
+ "1368-3518-4856": {
+  "kind": "near-infinite",
+  "verdict": "every card returns; per lap +1 mana, +2 storm; ends when library and opponent library run out",
+  "steps": [
+   "Activate Lion's Eye Diamond: discard your hand, sacrifice it, add {U}{U}{U}",
+   "Escape Lion's Eye Diamond, exiling three other cards from your graveyard",
+   "Escape Brain Freeze: pay {1}{U}, exile three cards from your graveyard",
+   "Storm copies resolve: you mill 6, the opponent mills 3 per extra copy; Brain Freeze returns to the graveyard"
+  ],
+  "start": {
+   "hand": 6,
+   "graveyard": 0,
+   "mana": 0,
+   "storm": 0,
+   "library": 60,
+   "opponent_library": 99
+  },
+  "zones": {
+   "Underworld Breach": "B",
+   "Lion's Eye Diamond": "B",
+   "Brain Freeze": "G"
+  },
+  "table": [
+   {
+    "lap": 1,
+    "zones": {
+     "Underworld Breach": "B",
+     "Lion's Eye Diamond": "B",
+     "Brain Freeze": "G"
+    },
+    "counts": {
+     "hand": 0,
+     "graveyard": 6,
+     "mana": 1,
+     "storm": 2,
+     "library": 54,
+     "opponent_library": 99
+    }
+   },
+   {
+    "lap": 2,
+    "zones": {
+     "Underworld Breach": "B",
+     "Lion's Eye Diamond": "B",
+     "Brain Freeze": "G"
+    },
+    "counts": {
+     "hand": 0,
+     "graveyard": 6,
+     "mana": 2,
+     "storm": 4,
+     "library": 48,
+     "opponent_library": 93
+    }
+   },
+   {
+    "lap": 3,
+    "zones": {
+     "Underworld Breach": "B",
+     "Lion's Eye Diamond": "B",
+     "Brain Freeze": "G"
+    },
+    "counts": {
+     "hand": 0,
+     "graveyard": 6,
+     "mana": 3,
+     "storm": 6,
+     "library": 42,
+     "opponent_library": 81
+    }
+   }
+  ],
+  "fixture": true
+ },
+ "1409-3821": {
+  "kind": "infinite",
+  "verdict": "every card returns; per lap +1 enters, +3 mana",
+  "steps": [
+   "Pay {1}{U}: Deadeye Navigator blinks Peregrine Drake",
+   "Peregrine Drake untaps five lands; tap them for mana"
+  ],
+  "start": {
+   "mana": 3
+  },
+  "zones": {
+   "Peregrine Drake": "B",
+   "Deadeye Navigator": "B"
+  },
+  "table": [
+   {
+    "lap": 1,
+    "zones": {
+     "Peregrine Drake": "B",
+     "Deadeye Navigator": "B"
+    },
+    "counts": {
+     "mana": 6,
+     "enters": 1
+    }
+   },
+   {
+    "lap": 2,
+    "zones": {
+     "Peregrine Drake": "B",
+     "Deadeye Navigator": "B"
+    },
+    "counts": {
+     "mana": 9,
+     "enters": 2
+    }
+   },
+   {
+    "lap": 3,
+    "zones": {
+     "Peregrine Drake": "B",
+     "Deadeye Navigator": "B"
+    },
+    "counts": {
+     "mana": 12,
+     "enters": 3
+    }
+   }
+  ],
+  "fixture": true
+ },
+ "690-3966": {
+  "kind": "near-infinite",
+  "verdict": "every card returns; per lap +1 life; ends when opponent life runs out",
+  "steps": [
+   "Gain life (to start it)",
+   "Sanguine Bond: an opponent loses 1 life",
+   "Exquisite Blood: you gain 1 life"
+  ],
+  "start": {
+   "life": 40,
+   "opponent_life": 40
+  },
+  "zones": {
+   "Sanguine Bond": "B",
+   "Exquisite Blood": "B"
+  },
+  "table": [
+   {
+    "lap": 1,
+    "zones": {
+     "Sanguine Bond": "B",
+     "Exquisite Blood": "B"
+    },
+    "counts": {
+     "life": 42,
+     "opponent_life": 39
+    }
+   },
+   {
+    "lap": 2,
+    "zones": {
+     "Sanguine Bond": "B",
+     "Exquisite Blood": "B"
+    },
+    "counts": {
+     "life": 43,
+     "opponent_life": 38
+    }
+   },
+   {
+    "lap": 3,
+    "zones": {
+     "Sanguine Bond": "B",
+     "Exquisite Blood": "B"
+    },
+    "counts": {
+     "life": 44,
+     "opponent_life": 37
+    }
+   }
+  ],
+  "fixture": true
+ },
+ "751-2757": {
+  "kind": "infinite",
+  "verdict": "every card returns; per lap +1 enters, +1 leaves, +1 storm",
+  "steps": [
+   "Tap an Island for {U}",
+   "Cast Shrieking Drake for {U}",
+   "With its trigger on the stack, tap Shrieking Drake to Earthcraft: untap the Island",
+   "The trigger returns Shrieking Drake to your hand"
+  ],
+  "start": {
+   "mana": 0,
+   "untapped_islands": 1,
+   "storm": 0
+  },
+  "zones": {
+   "Shrieking Drake": "H",
+   "Earthcraft": "B"
+  },
+  "table": [
+   {
+    "lap": 1,
+    "zones": {
+     "Shrieking Drake": "H",
+     "Earthcraft": "B"
+    },
+    "counts": {
+     "mana": 0,
+     "untapped_islands": 1,
+     "storm": 1,
+     "enters": 1,
+     "leaves": 1
+    }
+   },
+   {
+    "lap": 2,
+    "zones": {
+     "Shrieking Drake": "H",
+     "Earthcraft": "B"
+    },
+    "counts": {
+     "mana": 0,
+     "untapped_islands": 1,
+     "storm": 2,
+     "enters": 2,
+     "leaves": 2
+    }
+   },
+   {
+    "lap": 3,
+    "zones": {
+     "Shrieking Drake": "H",
+     "Earthcraft": "B"
+    },
+    "counts": {
+     "mana": 0,
+     "untapped_islands": 1,
+     "storm": 3,
+     "enters": 3,
+     "leaves": 3
+    }
+   }
+  ],
+  "fixture": true
+ }
+}

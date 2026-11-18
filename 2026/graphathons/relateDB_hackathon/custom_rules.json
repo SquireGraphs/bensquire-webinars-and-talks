@@ -1,0 +1,41 @@
+{
+ "rules": [
+  {
+   "name": "Cast from graveyard",
+   "match": "you may cast this card from your graveyard",
+   "description": "When this card dies, you can cast it again from your graveyard for its mana cost.",
+   "needs": "Zombie",
+   "kind": "Triggered",
+   "trigger": [
+    "self_dies"
+   ],
+   "costs": [
+    {
+     "resource": "mana",
+     "amount": "mana value"
+    }
+   ],
+   "produces": [
+    {
+     "resource": "creature",
+     "amount": 1
+    }
+   ],
+   "causes": [
+    {
+     "event": "self_enters",
+     "scope": "self"
+    },
+    {
+     "event": "creature_enters",
+     "scope": "any"
+    }
+   ],
+   "example": [
+    "Gravecrawler",
+    "Phyrexian Altar",
+    "Butcher Ghoul"
+   ]
+  }
+ ]
+}

@@ -11,14 +11,15 @@ CARDS     ?= $(lastword $(sort $(wildcard default-cards-*.json*)))
 VARIANTS  ?= variants.json.gz
 EXTRACTED ?= extracted_sonnet.jsonl,extracted_sonnet_lotho.jsonl,extracted_haiku_all.jsonl,extracted_haiku_new.jsonl
 
-.PHONY: help start setup data build setup-build test release clean clean-data
+.PHONY: help start setup data build setup-build test pack release clean clean-data
 
 help:
 	@echo "make start    set up, download the data if needed, and open the app"
-	@echo "make data     download the prebuilt graph and combos (skips files already here)"
+	@echo "make data     unpack the saved graph from data/ (skips files already here)"
 	@echo "make test     run the regression checks"
 	@echo "make build    rebuild the graph from Scryfall, Commander Spellbook and the LLM readings"
-	@echo "make release  package the data as GitHub Release files (maintainers)"
+	@echo "make pack     copy your saved graph into data/ to commit with the code (maintainers)"
+	@echo "make release  make pack, and also attach it to a GitHub Release"
 	@echo "make clean    remove the virtual environment"
 	@echo "make clean-data  remove the graph and combo files (also a graph you built yourself)"
 
@@ -50,8 +51,11 @@ build: setup-build
 	@test -n "$(CARDS)" || (echo "No default-cards-*.json found: download Scryfall's Default Cards bulk file here first."; exit 1)
 	. $(BIN)/activate && bash build_all.sh $(CARDS) $(VARIANTS) $(EXTRACTED)
 
+pack: setup
+	$(BIN)/python pack_data.py
+
 release: setup
-	$(BIN)/python release_data.py --upload
+	$(BIN)/python pack_data.py --release
 
 clean:
 	rm -rf $(VENV) dist
