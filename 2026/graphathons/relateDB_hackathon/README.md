@@ -1,44 +1,91 @@
-# MTGraphRAG: MTG synergy graph on Relate
-
-Upload a Commander deck and get an instant analysis of its combos, nonbos, synergies and the cards one
-step away from a combo, all from a labeled property graph that runs locally in [Relate](https://relatedb.ai).
+# MTGraphRAG
+Find the combos, nonbos and one-card-away upgrades in your Commander deck from the rules of the game, not card popularity, with a graph that runs locally in [Relate](https://relatedb.ai).
 
 ![The Graph tab for Teysa Karlov's deck: cards (gold) linked to their abilities (white), which connect through events (blue), resources (orange) and game states (green)](docs/deck-graph.png)
 
 *Teysa Karlov's deck as a graph: 187 nodes of cards, abilities, events, resources and states. A combo is a cycle in it.*
 
-## Quick start
+## Use case
+Many MTG deckbuilding resources rely on crowdsourcing and become a popularity contest: cards seen together often
+don't actually work together. Commander Spellbook lists over 120,000 known combos but can't say why a combo works or
+find a new one, and LLMs describe card interactions with confidence and get the rules wrong. MTGraphRAG analyses a
+Commander deck by the rules: which cards combo, which work against each other (nonbos), which strategies the deck is
+built around, and which one card would complete a combo. Every combo is traced step by step. It runs on your own
+device, so it can come with you to the card shop.
+
+The relationships that matter are cause and effect between card abilities:
+- `(:Card)-[:HAS_ABILITY]->(:Ability)`: each card split into its abilities, labelled `Triggered`, `Activated`, `Static` or `Spell`
+- `(:Event)<-[:TRIGGERED_BY]-(:Ability)`: what sets an ability off ("you gain life" sets off Sanguine Bond)
+- `(:Ability)-[:PRODUCES|COSTS]->(:Resource)` and `(:Ability)-[:RETRIGGERS]->(:Event)`: what it makes, what it pays, what it makes happen
+- `(:Resource)-[:FIRES]->(:Event)`: a resource that counts as an event (life gained counts as "you gain life")
+- `(:Ability)-[:REQUIRES_STATE|CAUSES_STATE|CLEARS_STATE]->(:State)`: where a card has to be (battlefield, graveyard, exile, hand, held under another card) and where the ability moves it
+
+A combo is a cycle through these that pays for itself and ends in the same state it started in. The graph also
+holds the evidence used to check one: Commander Spellbook's combos (`:Combo`), Scryfall's official rulings
+(`(:Card)-[:HAS_RULING]->(:Ruling)`) and the Comprehensive Rules (`:Rule` keyword sections linked to their numbered rules,
+`(:Rule)-[:HAS_PART]->(:RuleText)`, which carry embeddings in a vector index for retrieval).
+
+## How it uses Relate
+- **Mode:** single file (`mtg_live.rl`)
+- **Why this mode:** the graph is built once (cards, LLM readings, states, rulings, rule embeddings) and then read by
+  the app, so one file is the natural unit. It opens in about 3 seconds, keeps everything after the app stops, can be
+  checksummed and committed with the code, and is small enough to copy to a laptop or phone. That's the point of
+  analysing a deck at the card shop with nothing leaving your device. In-memory mode would mean rebuilding every
+  time, and with a single writer (the build) we don't need a directory.
+- **What the graph models:** 35,576 cards and about 118,000 abilities, linked through Events, Resources and States as
+  above; Commander Spellbook's 121,885 combos; 78,973 rulings; 2,995 Comprehensive Rules embedded in a Relate vector
+  index (`rule_text_vec`) so a judge model can check new combos against the most relevant rules. The app pulls a
+  deck's slice (a few hundred nodes) with one Cypher query and searches it for cycles. Combos taught in the app are
+  written back into the graph.
+
+## Setup and run
+**Prerequisites:** Python 3.10 or newer and `make` (macOS and Linux have both; on Windows, use WSL). No API key.
+
     git clone https://github.com/<owner>/<repo>.git && cd <repo>
     make start
 
-Needs Python 3.10+ and `make` (macOS and Linux have both; on Windows use WSL). `make start` creates a
-virtual environment, installs three packages (relate-db, numpy, scipy), unpacks the saved graph from
-data/ (checksum-verified, once), and opens http://localhost:8000. No API key, and nothing leaves your machine: the graph runs in memory on your device.
+`make start` creates a virtual environment, installs three packages (relate-db, numpy, scipy), unpacks the saved
+graph from `data/` (checksum-verified, once) and opens http://localhost:8000.
 
-Choose "Analyse your deck" and paste a decklist or upload an export from Moxfield, Archidekt or MTG Arena.
-Names are matched in any case and by front face, sideboards are skipped, and unknown cards come back with
-a suggestion ("Muldrifter (did you mean Mulldrifter?)"). Six sample decks are built in.
+**First result:** pick Teysa Karlov's sample deck. The Combos tab shows Sanguine Bond + Exquisite Blood with every
+step traced, and the Graph tab draws it. To analyse your own deck, choose "Analyse your deck" and paste a decklist or
+upload an export from Moxfield, Archidekt or MTG Arena.
+
+To query the graph directly (stop the app first: a store has one connection at a time):
+
+```python
+import relate
+db = relate.connect("mtg_live.rl")
+for row in db.execute("""MATCH (:Card {name: 'Sanguine Bond'})-[:HAS_ABILITY]->(a)-[r]->(x)
+                         RETURN labels(a) AS kind, type(r) AS rel, x.name AS target"""):
+    print(row)   # {'kind': ['Ability', 'Triggered'], 'rel': 'TRIGGERED_BY', 'target': 'gain_life'} ...
+```
+
+While the app runs, the Graph tab shows how to connect Neo4j Browser or cypher-shell to it.
 
     make start PORT=8080     # another port
     make test                # the regression checks
     make help                # everything else
 
-## Rebuild the graph yourself (make build)
-Download Scryfall's Default Cards bulk file and Commander Spellbook's variants export into this folder, with
-the LLM readings (extracted_*.jsonl), then:
+**Rebuild the graph yourself** (optional; needs Scryfall's Default Cards bulk file, Commander Spellbook's variants
+export and the LLM readings, `extracted_*.jsonl`, in this folder):
 
     make build CARDS=default-cards-YYYYMMDD.jsonl VARIANTS=variants.json.gz
-    # later runs: make start (keeps the graph you built; `make data` never overwrites it)
 
-## The saved graph (data/)
-The Relate store is a single file, `mtg_live.rl`, saved on disk (the app loads it into memory while it runs, and
-nothing is lost when it stops). A copy ships in this repo: `data/mtg_live.rl.gz.001`, `.002`, … are the store
-gzipped and split under GitHub's file size limit, next to `data/variants_slim.jsonl.gz` (the Commander Spellbook
-combos), with every checksum in `data_manifest.json`. `make data` puts them back together as `mtg_live.rl`. By
-hand: `cat data/mtg_live.rl.gz.* | gunzip > mtg_live.rl`.
+## Where the data lives
+- **The persistent store:** `mtg_live.rl` in the repo root, a single Relate file, created by `make start` (or
+  `make data`) from the copy committed in **`data/`**.
+- **`data/mtg_live.rl.gz.001`, `.002`, …:** the store, gzipped and split under GitHub's file size limit. By hand:
+  `cat data/mtg_live.rl.gz.* | gunzip > mtg_live.rl`.
+- **`data/variants_slim.jsonl.gz`:** Commander Spellbook's combos, which the app loads next to the store.
+- **`data_manifest.json`:** the SHA-256 of every file, checked when they're unpacked.
 
-To ship a rebuilt graph: stop the server, run `make pack`, then commit `data/` and `data_manifest.json`.
-`make release` does the same and also attaches the files to a GitHub Release.
+To ship a rebuilt graph: stop the app, run `make pack`, then commit `data/` and `data_manifest.json`.
+
+---
+
+# Reference
+Everything below is the detailed developer documentation.
 
 ## Setup (virtual environment)
     bash setup_venv.sh               # creates .venv with the core packages (relate-db, scipy, anthropic, pypdf...)
@@ -51,7 +98,7 @@ Keeps this project's packages out of Anaconda's base environment. The Comprehens
     python checks.py mtg_live.rl variants_slim.jsonl.gz          # ~30 s, exit code 0 = all pass
     python checks.py mtg_live.rl variants_slim.jsonl.gz --fast   # skip the random-deck sweep
 
-66 checks: 20 real combos that must be found, 30 look-alikes that must not (each named with the rule
+135 checks, including 20 real combos that must be found, 30 look-alikes that must not (each named with the rule
 it guards), one-shot wins, nonbo verdicts, per-deck minimum scores and maximum unconfirmed loops,
 100 random decks, and every review in reviews.jsonl. Results are deterministic (fixed search order).
 
