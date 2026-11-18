@@ -247,7 +247,12 @@ pre.cmd { background: var(--raised); border-radius: 8px; padding: 10px 12px; ove
 .gwrap.enlarged .legend-float { order: 2; margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); width: 100%; }
 .gwrap.enlarged { background: var(--surface); }   /* the same white frame as the synergy view */
 .glegend { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
-.glegend .legend { margin: 0; justify-content: center; flex-wrap: nowrap; gap: 14px; white-space: nowrap; }
+.glegend { max-width: 100%; min-width: 0; }
+.glegend .legend { margin: 0; justify-content: center; flex-wrap: wrap; gap: 4px 14px; max-width: 100%; }
+.glegend .legend li { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; }   /* the row wraps between entries; a long entry wraps its own words */
+.glegend .legend li i { margin-right: 0; flex: none; }
+.glegend .legend li svg { flex: none; }
+@media (max-width: 600px) { .glegend .legend { justify-content: flex-start; } .glegend .lh { min-width: 0; width: 100%; } }
 .glegend .lh { font-weight: 700; color: var(--muted); min-width: 52px; }
 .mcanvas .mnode[role=button] { cursor: pointer; }
 .mcanvas .mnode.sel text { font-weight: 700; }
@@ -895,7 +900,7 @@ function graphLegend(extra = "") {
       <li title="Something happens: a creature enters, you gain life…"><i style="background:var(--blue)"></i>Event</li><li title="Something you have or spend: mana, life, tokens…"><i style="background:var(--orange)"></i>Resource</li>
       <li title="Where a card is: battlefield, graveyard, hand, exile, held in exile"><i style="background:#4fa38f"></i>State</li></ul>
     <ul class="legend"><li class="lh">Lines</li>
-      <li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--blue)" stroke-width="2" stroke-dasharray="4 3"/></svg> sets off · pays for</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--gold)" stroke-width="2"/></svg> makes · makes happen</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--muted)" stroke-width="2"/></svg> has ability</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--gold)" stroke-width="2" stroke-dasharray="2 4"/></svg> counts as (making life counts as “you gain life”)</li>
+      <li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--blue)" stroke-width="2" stroke-dasharray="4 3"/></svg> sets off · pays for</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--gold)" stroke-width="2"/></svg> makes · makes happen</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--muted)" stroke-width="2"/></svg> has ability</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--gold)" stroke-width="2" stroke-dasharray="2 4"/></svg> counts as (life gained → “you gain life”)</li>
       <li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="1 4"/></svg> needs (a card in a zone)</li><li><svg width="28" height="10" aria-hidden="true"><line x1="0" y1="5" x2="28" y2="5" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="7 3"/></svg> releases (what a card holds)</li></ul>
   </div>`;
 }
