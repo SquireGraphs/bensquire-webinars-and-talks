@@ -1,0 +1,8 @@
+relate-db==1.0.0
+pandas>=2.0
+numpy
+scipy>=1.11
+scikit-learn
+ijson
+anthropic
+pypdf

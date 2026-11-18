@@ -1,0 +1,4 @@
+# What the local app needs to run (make start). Rebuilding the graph needs requirements.txt.
+relate-db==1.0.0
+numpy
+scipy>=1.11

@@ -1,0 +1,2 @@
+# Optional: local embeddings for embed_rules.py --backend st (downloads PyTorch, ~150 MB, and a ~130 MB model once)
+sentence-transformers
