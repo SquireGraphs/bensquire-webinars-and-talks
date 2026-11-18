@@ -3,6 +3,10 @@
 Upload a Commander deck and get an instant analysis of its combos, nonbos, synergies and the cards one
 step away from a combo, all from a labeled property graph that runs locally in [Relate](https://relatedb.ai).
 
+![The Graph tab for Teysa Karlov's deck: cards (gold) linked to their abilities (white), which connect through events (blue), resources (orange) and game states (green)](docs/deck-graph.png)
+
+*Teysa Karlov's deck as a graph: 187 nodes of cards, abilities, events, resources and states. A combo is a cycle in it.*
+
 ## Quick start
     git clone https://github.com/<owner>/<repo>.git && cd <repo>
     make start
